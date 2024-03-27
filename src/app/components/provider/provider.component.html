@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-card-header>
+    <mat-form-field>
+      <input
+        matInput
+        (keyup)="Filterchange($event)"
+        placeholder="Enter the text"
+      />
+    </mat-form-field>
+  </mat-card-header>
+  <mat-card-content>
+    <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="prpR_ID">
+        <th
+          mat-sort-header
+          mat-header-cell
+          *matHeaderCellDef
+          class="mat-header"
+        >
+          PRPR ID
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.prpR_ID }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prpR_NAME">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>PRPR NAME</th>
+        <td mat-cell *matCellDef="let element">{{ element.prpR_NAME }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prpR_NPI">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>PRPR NPI</th>
+        <td mat-cell *matCellDef="let element">{{ element.prpR_NPI }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prpR_TERM_DT">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>PRPR TERM DT</th>
+        <td mat-cell *matCellDef="let element">{{ element.prpR_TERM_DT }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prpR_MCTR_TRSN">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>
+          PRPR MCTR TRSN
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.prpR_MCTR_TRSN }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="mctN_ID">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>MCTN ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.mctN_ID }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="praD_TYPE_PRIM">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>
+          PRAD TYPE PRIM
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.praD_TYPE_PRIM }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="praD_TYPE_CHECK">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>
+          PRAD TYPE CHECK
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.praD_TYPE_CHECK }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+  <br />
+  <mat-card-footer>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </mat-card-footer>
+</mat-card>
