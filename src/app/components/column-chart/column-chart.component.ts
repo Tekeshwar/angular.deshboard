@@ -57,9 +57,18 @@ export class ColumnChartComponent implements OnInit {
         }
       },
       series: [{
-        name: 'Count',
-        data: counts
-      }] as Highcharts.SeriesOptionsType[]
+        data: [10, 20, 25, 30, 35, 40, 45, 15, 40],
+        step: 'right',
+        name: 'Right'
+    }, {
+        data: [35, 30, 40, 150, 60, 170, 80, 185, 90],
+        step: 'center',
+        name: 'Center'
+    }, {
+        data: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        step: 'left',
+        name: 'Left'
+    }]as Highcharts.SeriesOptionsType[]
     };
   }
 
