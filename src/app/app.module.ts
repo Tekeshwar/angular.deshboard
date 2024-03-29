@@ -32,6 +32,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './components/home/home.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { ColumnChartComponent } from './components/column-chart/column-chart.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { HomeComponent } from './components/home/home.component';
     DashboardComponent,
     MenubarComponent,
     ProviderComponent,
-    HomeComponent
+    HomeComponent,
+    LineChartComponent,
+    ColumnChartComponent
   ],
   imports: [
     BrowserModule,
