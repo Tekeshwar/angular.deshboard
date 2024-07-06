@@ -33,7 +33,6 @@ export class ProviderComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginatior !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
-  //customerlist !: Customer[];
   providersList ! : Providercleanupdata[];
 
   displayedColumns: string[] = ["prpR_ID", "prpR_NAME", "prpR_NPI", "prpR_TERM_DT", "prpR_MCTR_TRSN", "mctN_ID","praD_TYPE_PRIM","praD_TYPE_CHECK"];

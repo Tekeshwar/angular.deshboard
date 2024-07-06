@@ -31,7 +31,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './components/home/home.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { ColumnChartComponent } from './components/column-chart/column-chart.component';
+import { ProviderResolverService } from './services/provider-resolver.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { HomeComponent } from './components/home/home.component';
     DashboardComponent,
     MenubarComponent,
     ProviderComponent,
-    HomeComponent
+    HomeComponent,
+    LineChartComponent,
+    ColumnChartComponent
   ],
   imports: [
     BrowserModule,
@@ -66,14 +72,16 @@ import { HomeComponent } from './components/home/home.component';
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
     
      
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    ProviderService
+    ProviderService,
+    ProviderResolverService
   ],
   bootstrap: [AppComponent]
 })
