@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <mat-form-field appearance="fill">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullname" type="text" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Mobile No.</mat-label>
+            <input matInput formControlName="mobile" type="text" required>
+          </mat-form-field>          
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <input matInput formControlName="role" type="text" required>
+          </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Sign Up</button>
+      </form>
+      <div *ngIf="errorMessage" [class]='messageClass'>
+        {{ errorMessage }}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { DashboardComponent } from './components/dashboard/dashboard.component'; 
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { Chart } from 'angular-highcharts';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { MaterialModule } from './material/material.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {MatListModule} from "@angular/material/list";
-import {MatCardModule} from "@angular/material/card"
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ProviderComponent } from './components/provider/provider.component';
 import { ProviderService } from './services/provider.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -36,6 +39,13 @@ import { HomeComponent } from './components/home/home.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { ColumnChartComponent } from './components/column-chart/column-chart.component';
 import { ProviderResolverService } from './services/provider-resolver.service';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './interceptor/token-interceptor.service';
+import { errorHandleInterceptor } from './interceptor/error-handle.interceptor';
+import { NotificationService } from './services/notification.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -45,14 +55,18 @@ import { ProviderResolverService } from './services/provider-resolver.service';
     ProviderComponent,
     HomeComponent,
     LineChartComponent,
-    ColumnChartComponent
+    ColumnChartComponent,
+    SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule,   
-     HighchartsChartModule,
+    MaterialModule,
+    HighchartsChartModule,
     MatInputModule,
     MatSelectModule,
     MatAutocompleteModule,
@@ -73,16 +87,22 @@ import { ProviderResolverService } from './services/provider-resolver.service';
     MatRadioModule,
     MatCheckboxModule,
     MatDialogModule,
-    FlexLayoutModule
-    
-     
+    FlexLayoutModule,
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
     ProviderService,
-    ProviderResolverService
+    ProviderResolverService,
+    NotificationService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+    {provide:HTTP_INTERCEPTORS, useValue:errorHandleInterceptor, multi:true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

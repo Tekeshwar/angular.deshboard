@@ -2,7 +2,14 @@
     flex: 1 1 auto;
   }
 
-  mat-toolbar{
+  .mat-toolbar{
     background-color: #343230 !important;
     color: white;
+  }
+  .custom-logout-button {
+    color: white !important;
+  }
+  .error-message {
+    color: red;
+    margin-top: 10px;
   }

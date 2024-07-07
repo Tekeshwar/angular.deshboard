@@ -1,9 +1,12 @@
-<mat-toolbar   class="mat-elevation-z8 ">
+<mat-toolbar class="mat-elevation-z8">
   <button (click)="drawer.toggle()" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Provider Cleanup Dashboard</span>
+  <span>Dashboard Demo Application </span>
   <span class="example-spacer"></span>
+  <button *ngIf="islogin" mat-button class="custom-logout-button" (click)="logout()">
+    Logout
+  </button>
 </mat-toolbar>
 <mat-drawer-container autosize>
   <mat-drawer #drawer opened="true" mode="side" position="start">

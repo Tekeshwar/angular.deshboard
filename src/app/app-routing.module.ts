@@ -4,23 +4,28 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProviderComponent } from './components/provider/provider.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProviderResolverService } from './services/provider-resolver.service';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  {path:'',component:DashboardComponent}, 
+  { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent },  
   {
     path: 'dashboard',
-    component:DashboardComponent,
-    resolve:{
-      providerCountList: ProviderResolverService
-    }
+    component: DashboardComponent,
+    resolve: {
+      providerCountList: ProviderResolverService,
+    },
+    canActivate: [authGuard],
   },
-  {path:'home',component:HomeComponent},
-  {path:'provider',component:ProviderComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'provider', component: ProviderComponent, canActivate: [authGuard] },
+  { path: '', redirectTo: '/signin', pathMatch: 'full' },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
